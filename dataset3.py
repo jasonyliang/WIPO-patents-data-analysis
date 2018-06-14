@@ -25,3 +25,27 @@ ax2.set_ylabel("Growth Rate")
 ax2.plot(year, growth_rate, label = "Growth Rate", color='green')
 plt.legend(bbox_to_anchor=(0.3, 1))
 plt.show()
+
+year = year.reshape(-1,1)
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(year, grants)
+
+plt.scatter(year, grants, label = 'Grant', color = 'red')
+plt.plot(year, regressor.predict(year), label = 'Projected Grant', color = 'blue')
+plt.legend()
+plt.ylabel('Grant')
+plt.xlabel('Year')
+plt.show()
+
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(year, growth_rate)
+
+plt.scatter(year, growth_rate, label = 'Growth Rate', color = 'red')
+plt.plot(year, regressor.predict(year), label = 'Projected Growth Rate', color = 'blue')
+plt.legend()
+plt.ylabel('Growth Rate')
+plt.xlabel('Year')
+plt.show()
+
