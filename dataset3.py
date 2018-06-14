@@ -7,8 +7,8 @@ year = dataset3.iloc[:, 0].values
 grants = dataset3.iloc[:, 1].values
 growth_rate = dataset3.iloc[:, 2].values
 growth_rate = pd.to_numeric(growth_rate, errors = 'coerce')
-
+growth_rate = growth_rate.reshape(-1, 1)
 
 from sklearn.preprocessing import Imputer
-imputer = Imputer(missing_values = '.', strategy = 'mean')
-growth_rate = imputer.fit_transform(growth_rate)
+imputer = Imputer(missing_values = "NaN", strategy = "mean")
+growth_rate = imputer.fit_transform(growth_rate)        
